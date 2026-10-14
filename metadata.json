@@ -1,0 +1,6 @@
+{
+  "name": "Rise Up",
+  "description": "Write down what is bothering you. You will get honest words of encouragement, daily motivation, guided breathing, and small actionable steps for today.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

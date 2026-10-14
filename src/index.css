@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg: #eaf1ef;
+    --surface: #ffffff;
+    --surface-2: #f2f7f6;
+    --ink: #12282b;
+    --muted: #55696c;
+    --line: #cfdcda;
+    --accent: #0f766e;
+    --accent-ink: #ffffff;
+    --dawn: #b45309;
+    --dawn-bg: #fdf1dc;
+    --alert-bg: #fdeceb;
+    --alert-line: #e8a7a2;
+    --font-display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+    --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+    color-scheme: light;
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #0c1a1d;
+    --surface: #13272a;
+    --surface-2: #1a3135;
+    --ink: #e5f0ee;
+    --muted: #9bb3b1;
+    --line: #2a4448;
+    --accent: #5eead4;
+    --accent-ink: #0c1a1d;
+    --dawn: #fbbf24;
+    --dawn-bg: #2c2412;
+    --alert-bg: #35191b;
+    --alert-line: #7c3a3d;
+    color-scheme: dark;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0c1a1d;
+      --surface: #13272a;
+      --surface-2: #1a3135;
+      --ink: #e5f0ee;
+      --muted: #9bb3b1;
+      --line: #2a4448;
+      --accent: #5eead4;
+      --accent-ink: #0c1a1d;
+      --dawn: #fbbf24;
+      --dawn-bg: #2c2412;
+      --alert-bg: #35191b;
+      --alert-line: #7c3a3d;
+      color-scheme: dark;
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.55;
+    margin: 0;
+    padding-inline: 16px;
+    padding-block: 28px 64px;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+/* Animations from Rise Up design */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sunrise {
+  from {
+    opacity: 0;
+    transform: translateY(36px) scale(0.6);
+  }
+  to {
+    opacity: 0.95;
+    transform: none;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  50% {
+    box-shadow: 0 0 26px 10px var(--dawn-bg);
+  }
+}
+
+@keyframes pop {
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes flash {
+  from {
+    background-color: var(--dawn-bg);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+@keyframes ring {
+  0%, 100% {
+    box-shadow: 0 0 0 0 var(--surface-2);
+  }
+  50% {
+    box-shadow: 0 0 0 20px transparent;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-9px);
+    opacity: 1;
+  }
+}
+
+.anim-rise {
+  animation: rise 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.anim-sunrise {
+  animation: sunrise 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) both, glow 4s ease-in-out 1.5s infinite;
+}
+
+.anim-slide-in {
+  animation: slideIn 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.anim-fade-in {
+  animation: fadeIn 0.45s ease both;
+}
+
+.anim-ring {
+  animation: ring 4s ease-in-out infinite;
+}
+
+.anim-spin-loader {
+  animation: spin 1s linear infinite;
+}
+
+.anim-bounce-loader {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+.anim-flash {
+  animation: flash 1.8s ease 0.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
